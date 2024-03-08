@@ -11,10 +11,10 @@ class User(BaseModel):
     A class that defines an individual User
 
     Public class attributes (all attributes are strings)
-    email : user email
-    password : user password
-    first_name: first name
-    last_name: last name
+        email : user email
+        password : user password
+        first_name: first name
+        last_name: last name
     """
 
     email = ""

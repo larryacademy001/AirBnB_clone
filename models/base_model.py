@@ -8,6 +8,7 @@ from datetime import datetime
 
 time_format = "%Y-%m-%dT%H:%M:%S.%f"
 
+
 class BaseModel:
     """Template for all subclasses.
 
@@ -15,14 +16,14 @@ class BaseModel:
         id: string - assign with an uuid when an instance is created:
         created_at: datetime - assign with the current datetime
         when an instance is created
-        updated_at: datetime - assign with the current datetime 
-        when an instance is created and it will be updated every 
+        updated_at: datetime - assign with the current datetime
+        when an instance is created and it will be updated every
         time you change your object
     """
 
     def __init__(self, *args, **kwargs):
         """Constructor Method
-        
+
         Args:
             - *args: list of arguments
             - **kwargs: dict of key-values arguments
@@ -44,18 +45,18 @@ class BaseModel:
 
     def __str__(self):
         """official string representation"""
-        
+
         return f"[{type(self).__name__}] ({self.id}) {self.__dict__}"
 
     def save(self):
         """Updates updated_at with the current datetime and save modelobject"""
-        
+
         self.updated_at = datetime.now()
         models.storage.save()
 
     def to_dict(self):
         """Returns a modified dictionary with all attributes of an object"""
-        
+
         new_obj_dict = self.__dict__.copy()
         new_obj_dict["__class__"] = type(self).__name__
         new_obj_dict["created_at"] = self.created_at.strftime(time_format)

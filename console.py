@@ -151,5 +151,6 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** attribute doesn't exist **")
 
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

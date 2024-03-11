@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-"""FileStorage Class.
+"""
+FileStorage Class.
 
 This module contains a class that serializes objects to a JSON file
 and deserializes JSON file to objects.
+
 """
 import json
 from models.base_model import BaseModel
@@ -13,13 +15,14 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 
-
 class FileStorage:
-    """Defines the blueprint of saving and retrieving objects .
+    """
+    Defines the blueprint of saving and retrieving objects .
 
     Attributes:
         __file_path: string - path to the JSON file
         __objects: dictionary - empty but will store objects by <class name>.id
+
     """
     __file_path = "file.json"
     __objects = {}

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""This is Base Model Class that defines all
+"""
+This is Base Model Class that defines all
 common attributes/methods for other classes
 """
 import models

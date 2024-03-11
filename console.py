@@ -153,7 +153,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_count(self, arg):
         """Prints the number of objects available based on the class name"""
-        error_flag = HBNBCommand.HBNBCommand_error_handler(arg)
+        error_flag = HBNBCommand.handle_hbnb_command_error(arg)
 
         if error_flag:
             return

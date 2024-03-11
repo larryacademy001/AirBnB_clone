@@ -100,8 +100,10 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
 
-        objects = [str(obj) for obj in storage.all().values()
-                    if not arg or obj.__class__.__name__ == arg]
+        objects = [
+            str(obj) for obj in storage.all().values() 
+            if not arg or obj.__class__.__name__ == arg
+        ]
         print(objects)
 
     def do_update(self, arg):

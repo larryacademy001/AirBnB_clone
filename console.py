@@ -15,7 +15,8 @@ from models.review import Review
 
 
 valid_classes = {"BaseModel", "User", "State", "City",
-"Amenity", "Place", "Review"}
+                "Amenity", "Place", "Review"}
+
 
 class HBNBCommand(cmd.Cmd):
     """Command Interpreter Class"""

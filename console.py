@@ -183,7 +183,7 @@ class HBNBCommand(cmd.Cmd):
                 .replace(":", "")
             )
             argument_list = modified_argument.split()
-            argument_list[0], argument_list[1] = 
+            argument_list[0], argument_list[1] = \
                 argument_list[1], argument_list[0]
             arg = " ".join(argument_list)
 

@@ -151,6 +151,90 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** attribute doesn't exist **")
 
+    def do_count(self, arg):
+        """Prints the number of objects available based on the class name"""
+        error_flag = HBNBCommand.HBNBCommand_error_handler(arg)
+
+        if error_flag:
+            return
+
+        object_count = 0
+        argument_list = arg.split()
+        all_objects = storage.all()
+        key = argument_list[0]
+
+        for obj_key in all_objects:
+            if key in obj_key:
+                object_count += 1
+
+        print(object_count)
+           
+    def precmd(self, arg):
+        if "." in arg:
+            modified_argument = (
+                arg.replace(".", " ")
+                .replace(", ", " ")
+                .replace("(", " ")
+                .replace(")", " ")
+                .replace('"', "")
+                .replace("{", "")
+                .replace("}", "")
+                .replace("'", "")
+                .replace(":", "")
+            )
+            argument_list = modified_argument.split()
+            argument_list[0], argument_list[1] = argument_list[1], argument_list[0]
+            arg = " ".join(argument_list)
+
+        return super().precmd(arg)
+
+    def onecmd(self, args):
+        if args == "quit":
+            return self.do_quit(args)
+        elif args == "EOF":
+            return self.do_EOF(args)
+        else:
+            return cmd.Cmd.onecmd(self, args)
+
+    @classmethod
+    def handle_hbnb_command_error(cls, command_arg, **kwargs):
+        if "all" in kwargs.values():
+            if not command_arg:
+                return False
+
+        if not command_arg:
+            print("** class name missing **")
+            return True
+        else:
+            command_arg = command_arg.split()
+
+        num_command_args = len(command_arg)
+
+        if command_arg[0] not in HBNBCommand.models:
+            print("** class doesn't exist **")
+            return True
+
+        if "command" not in kwargs:
+            return False
+
+        for sub_command_arg in kwargs.values():
+            if sub_command_arg in ["show", "destroy"]:
+                if num_command_args < 2:
+                    print("** instance id missing **")
+                    return True
+
+            if sub_command_arg == "update":
+                if num_command_args < 2:
+                    print("** instance id missing **")
+                    return True
+                elif num_command_args < 3:
+                    print("** attribute name missing **")
+                    return True
+                elif num_command_args < 4:
+                    print("** value missing **")
+                    return True
+
+        return False
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

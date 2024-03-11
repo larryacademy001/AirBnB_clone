@@ -14,7 +14,7 @@ from models.place import Place
 from models.review import Review
 
 
-valid_classes = {"BaseModel", "User", "State", "City", 
+valid_classes = {"BaseModel", "User", "State", "City",
     "Amenity", "Place", "Review"}
 
 

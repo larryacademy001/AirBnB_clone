@@ -101,16 +101,18 @@ class HBNBCommand(cmd.Cmd):
             return
 
         objects = [
-            str(obj) for obj in storage.all().values() 
+            str(obj) for obj in storage.all().values()
             if not arg or obj.__class__.__name__ == arg
         ]
         print(objects)
 
     def do_update(self, arg):
         """
-        Updates an instance based on the class name and id by adding or updating
-        attribute (save the change into the JSON file).
-        Usage: update <class name> <id> <attribute name> "<attribute value>"
+        Updates an instance based on the class name and id by
+        adding or updating attribute (save the change into
+        the JSON file).
+        Usage: update <class name> <id> <attribute name>
+        "<attribute value>"
         """
         args = arg.split()
         if len(args) == 0:

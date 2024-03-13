@@ -60,14 +60,14 @@ class TestReview(unittest.TestCase):
         """test that values in dict returned
         from to_dict are correct
         """
-        t_format = "%Y-%m-%dT%H:%M:%S.%f"
+        tf = "%Y-%m-%dT%H:%M:%S.%f"
         r = Review()
         new_d = r.to_dict()
         self.assertEqual(new_d["__class__"], "Review")
         self.assertEqual(type(new_d["created_at"]), str)
         self.assertEqual(type(new_d["updated_at"]), str)
-        self.assertEqual(new_d["created_at"], r.created_at.strftime(t_format))
-        self.assertEqual(new_d["updated_at"], r.updated_at.strftime(t_format))
+        self.assertEqual(new_d["created_at"], r.created_at.strftime(tf))
+        self.assertEqual(new_d["updated_at"], r.updated_at.strftime(tf))
 
     def test_str(self):
         """test str method for correct output"""

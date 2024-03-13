@@ -152,23 +152,25 @@ class HBNBCommand(cmd.Cmd):
             print("** attribute doesn't exist **")
 
     def do_count(self, arg):
-        """Prints the number of objects available based on the class name"""
-        error_flag = HBNBCommand.handle_hbnb_command_error(arg)
-
-        if error_flag:
+        """Count the number of instances of a class"""
+        if not arg:
+            print("** class name missing **")
             return
 
-        object_count = 0
-        argument_list = arg.split()
-        all_objects = storage.all()
-        key = argument_list[0]
+        class_name = arg.split()[0]
 
-        for obj_key in all_objects:
-            if key in obj_key:
-                object_count += 1
+        if class_name not in valid_classes:
+            print("** class doesn't exist **")
+            return
 
-        print(object_count)
+        count = 0
+        objects = storage.all()
+        for obj in objects.values():
+            if obj.__class__.__name__ == class_name:
+                count += 1
 
+        print(count)
+    
     def precmd(self, arg):
         if "." in arg:
             modified_argument = (

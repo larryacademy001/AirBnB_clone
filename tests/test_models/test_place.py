@@ -7,6 +7,7 @@ import unittest
 from datetime import datetime
 from models import place
 from models.base_model import BaseModel
+Place = place.Place
 
 
 class TestPlace(unittest.TestCase):
@@ -131,14 +132,14 @@ class TestPlace(unittest.TestCase):
         """test that values in dict returned
         from to_dict are correct
         """
-        time_format = "%Y-%m-%dT%H:%M:%S.%f"
+        tf = "%Y-%m-%dT%H:%M:%S.%f"
         p = Place()
         new_d = p.to_dict()
         self.assertEqual(new_d["__class__"], "Place")
         self.assertEqual(type(new_d["created_at"]), str)
         self.assertEqual(type(new_d["updated_at"]), str)
-        self.assertEqual(new_d["created_at"], p.created_at.strftime(time_format))
-        self.assertEqual(new_d["updated_at"], p.updated_at.strftime(time_format))
+        self.assertEqual(new_d["created_at"], p.created_at.strftime(tf))
+        self.assertEqual(new_d["updated_at"], p.updated_at.strftime(tf))
 
     def test_str(self):
         """test str method for correct output"""

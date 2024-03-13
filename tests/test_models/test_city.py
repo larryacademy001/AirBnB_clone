@@ -7,12 +7,13 @@ import unittest
 from datetime import datetime
 from models import city
 from models.base_model import BaseModel
+City = city.City
 
 
 class TestCity(unittest.TestCase):
     """Test the City class"""
     def test_is_subclass(self):
-       """Test City for subclass of BaseModel"""
+        """Test City for subclass of BaseModel"""
         c = City()
         self.assertIsInstance(c, BaseModel)
         self.assertTrue(hasattr(c, "id"))
@@ -52,14 +53,14 @@ class TestCity(unittest.TestCase):
         """test that values in dict returned
         from to_dict are correct
         """
-        time_format = "%Y-%m-%dT%H:%M:%S.%f"
+        tf = "%Y-%m-%dT%H:%M:%S.%f"
         c = City()
         new_d = c.to_dict()
         self.assertEqual(new_d["__class__"], "City")
         self.assertEqual(type(new_d["created_at"]), str)
         self.assertEqual(type(new_d["updated_at"]), str)
-        self.assertEqual(new_d["created_at"], c.created_at.strftime(time_format))
-        self.assertEqual(new_d["updated_at"], c.updated_at.strftime(time_format))
+        self.assertEqual(new_d["created_at"], c.created_at.strftime(tf))
+        self.assertEqual(new_d["updated_at"], c.updated_at.strftime(tf))
 
     def test_str(self):
         """test str method for correct output"""

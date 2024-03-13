@@ -5,6 +5,7 @@ Test cases for base_model class and methods documentation and instances.
 """
 import unittest
 from models import base_model
+import time
 from datetime import datetime
 from unittest import mock
 BaseModel = base_model.BaseModel

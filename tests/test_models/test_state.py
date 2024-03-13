@@ -13,7 +13,7 @@ State = state.State
 class TestState(unittest.TestCase):
     """Test the State class"""
     def test_is_subclass(self):
-         """Test State for subclass of BaseModel"""
+        """Test State for subclass of BaseModel"""
         s = State()
         self.assertIsInstance(s, BaseModel)
         self.assertTrue(hasattr(s, "id"))

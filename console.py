@@ -170,7 +170,7 @@ class HBNBCommand(cmd.Cmd):
                 count += 1
 
         print(count)
-    
+
     def precmd(self, arg):
         if "." in arg:
             modified_argument = (

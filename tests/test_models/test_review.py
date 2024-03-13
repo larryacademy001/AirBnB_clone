@@ -7,7 +7,7 @@ import unittest
 from datetime import datetime
 from models import review
 from models.base_model import BaseModel
-
+Review = review.Review
 
 class TestReview(unittest.TestCase):
     """Test the Review class"""

@@ -6,6 +6,7 @@ import unittest
 from datetime import datetime
 from models import amenity
 from models.base_model import BaseModel
+Amenity = amenity.Amenity
 
 
 class TestAmenity(unittest.TestCase):

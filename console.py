@@ -129,13 +129,14 @@ class HBNBCommand(cmd.Cmd):
         instance_id = args[1]
 
         key = class_name + '.' + instance_id
-        if key not in self.__objects:
+        if key not in storage.all():
             print("** no instance found **")
             return
 
         if len(args) < 3:
             print("** attribute name missing **")
             return
+
         attribute_name = args[2]
 
         if len(args) < 4:
@@ -143,13 +144,10 @@ class HBNBCommand(cmd.Cmd):
             return
         attribute_value = args[3]
 
-        instance = self.__objects[key]
-        if hasattr(instance, attribute_name):
-            setattr(instance, attribute_name, attribute_value)
-            instance.save()
-            print(instance)
-        else:
-            print("** attribute doesn't exist **")
+        instance = storage.all()[key]
+        setattr(instance, attribute_name, attribute_value)
+        instance.save()
+        print(instance)
 
     def do_count(self, arg):
         """Count the number of instances of a class"""

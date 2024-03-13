@@ -13,7 +13,7 @@ City = city.City
 class TestCity(unittest.TestCase):
     """Test the City class"""
     def test_is_subclass(self):
-       """Test City for subclass of BaseModel"""
+        """Test City for subclass of BaseModel"""
         c = City()
         self.assertIsInstance(c, BaseModel)
         self.assertTrue(hasattr(c, "id"))

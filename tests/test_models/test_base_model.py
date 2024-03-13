@@ -17,7 +17,7 @@ class TestBaseModel(unittest.TestCase):
         """... checks if BaseModel is properly instantiated"""
         bm = BaseModel()
         self.assertIs(type(bm), BaseModel)
-        bm.name = "My_First_Model"
+        bm.name = "Holberton"
         bm.number = 89
         attrs_types = {
             "id": str,
@@ -30,7 +30,7 @@ class TestBaseModel(unittest.TestCase):
             with self.subTest(attr=attr, typ=typ):
                 self.assertIn(attr, bm.__dict__)
                 self.assertIs(type(bm.__dict__[attr]), typ)
-        self.assertEqual(bm.name, "My_First_Model")
+        self.assertEqual(bm.name, "Holberton")
         self.assertEqual(bm.number, 89)
 
     def test_datetime_attributes(self):
@@ -66,7 +66,7 @@ class TestBaseModel(unittest.TestCase):
     def test_to_dict(self):
         """... checks if BaseModel is properly casted to dictionary"""
         my_model = BaseModel()
-        my_model.name = "My_First_Model"
+        my_model.name = "Holberton"
         my_model.my_number = 89
         d = my_model.to_dict()
         expected_attrs = ["id",

@@ -13,35 +13,35 @@ class TestReview(unittest.TestCase):
     """Test the Review class"""
     def test_is_subclass(self):
         """Test Review for subclass of BaseModel"""
-        review = Review()
-        self.assertIsInstance(review, BaseModel)
-        self.assertTrue(hasattr(review, "id"))
-        self.assertTrue(hasattr(review, "created_at"))
-        self.assertTrue(hasattr(review, "updated_at"))
+        r = Review()
+        self.assertIsInstance(r, BaseModel)
+        self.assertTrue(hasattr(r, "id"))
+        self.assertTrue(hasattr(r, "created_at"))
+        self.assertTrue(hasattr(r, "updated_at"))
 
     def test_place_id_attr(self):
         """Test Amenity for attribute
         place_id and if it's empty
         """
-        review = Review()
-        self.assertTrue(hasattr(review, "place_id"))
-        self.assertEqual(review.place_id, "")
+        r = Review()
+        self.assertTrue(hasattr(r, "place_id"))
+        self.assertEqual(r.place_id, "")
 
     def test_user_id_attr(self):
         """Test Amenity for attribute
         user_id and if it's empty
         """
-        review = Review()
-        self.assertTrue(hasattr(review, "user_id"))
-        self.assertEqual(review.user_id, "")
+        r = Review()
+        self.assertTrue(hasattr(r, "user_id"))
+        self.assertEqual(r.user_id, "")
 
     def test_text_attr(self):
         """Test Amenity for attribute
         text and if it's empty
         """
-        review = Review()
-        self.assertTrue(hasattr(review, "text"))
-        self.assertEqual(review.text, "")
+        r = Review()
+        self.assertTrue(hasattr(r, "text"))
+        self.assertEqual(r.text, "")
 
     def test_to_dict_creates_dict(self):
         """test to_dict making sure they
@@ -71,6 +71,6 @@ class TestReview(unittest.TestCase):
 
     def test_str(self):
         """test str method for correct output"""
-        review = Review()
-        string = "[Review] ({}) {}".format(review.id, review.__dict__)
-        self.assertEqual(string, str(review))
+        r = Review()
+        string = "[Review] ({}) {}".format(r.id, r.__dict__)
+        self.assertEqual(string, str(r))
